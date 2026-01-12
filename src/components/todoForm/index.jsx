@@ -22,7 +22,7 @@ function TodoForm() {
       </Form.Item>
 
       <Form.Item>
-        <Button onClick={() => console.log()} type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
