@@ -5,7 +5,12 @@ const todoSlice = createSlice({
   initialState: {
     todos: [],
   },
-  reducers: {},
+  reducers: {
+    addTodo(state, action) {
+      state.todos.push(action.payload);
+    },
+  },
 });
 
+export const { addTodo } = todoSlice.actions;
 export default todoSlice.reducer;
