@@ -60,7 +60,10 @@ function TodoItem({ text, id, completed }) {
           type="primary"
           icon={<EditOutlined />}
           onClick={EditModalOpen}
-          style={{ background: "#3939f1ff" }}
+          disabled={completed}
+          style={{
+            background: completed ? "#bdbdbd" : "#3939f1ff",
+          }}
         />
         <Modal
           title="Edit Todo"
