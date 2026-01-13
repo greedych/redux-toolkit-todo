@@ -14,15 +14,15 @@ function TodoItem({ text, id, completed }) {
   const [isEdit, setIsEdit] = useState(false);
   const [newTodoText, setNewTodoText] = useState(text);
 
-  const isEditModalOpen = () => {
+  const EditModalOpen = () => {
     setIsEdit(true);
   };
 
-  const isEditModalOk = (todoId) => {
+  const EditModalOk = (todoId) => {
     dispatch(editTodo({ id: todoId, text: newTodoText }));
     setIsEdit(false);
   };
-  const isEditModalCancel = () => {
+  const EditModalCancel = () => {
     setIsEdit(false);
   };
 
@@ -58,15 +58,15 @@ function TodoItem({ text, id, completed }) {
         <Button
           type="primary"
           icon={<EditOutlined />}
-          onClick={isEditModalOpen}
+          onClick={EditModalOpen}
           style={{ background: "#3939f1ff" }}
         />
         <Modal
           title="Edit Todo"
           closable={{ "aria-label": "Custom Close Button" }}
           open={isEdit}
-          onOk={() => isEditModalOk(id)}
-          onCancel={isEditModalCancel}
+          onOk={() => EditModalOk(id)}
+          onCancel={EditModalCancel}
         >
           <Input
             value={newTodoText}
