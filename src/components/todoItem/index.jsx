@@ -1,9 +1,31 @@
-import { Button, Flex, Typography } from "antd";
+import { Button, Flex, Input, Modal, Typography } from "antd";
 import { useDispatch } from "react-redux";
-import { deleteTodo, toggleCompleted } from "../../redux/slices";
+import {
+  deleteTodo,
+  editTodo,
+  toggleCompleted,
+} from "../../redux/slices/todoSlice";
+import { EditOutlined } from "@ant-design/icons";
+import { useState } from "react";
 
 function TodoItem({ text, id, completed }) {
   const dispatch = useDispatch();
+
+  const [isEdit, setIsEdit] = useState(false);
+  const [newTodoText, setNewTodoText] = useState("");
+
+  const isEditModalOpen = () => {
+    setNewTodoText(text);
+    setIsEdit(true);
+  };
+
+  const isEditModalOk = (todoId) => {
+    dispatch(editTodo({ id: todoId, text: newTodoText }));
+    setIsEdit(false);
+  };
+  const isEditModalCancel = () => {
+    setIsEdit(false);
+  };
 
   const handleDelete = (todoId) => {
     dispatch(deleteTodo(todoId));
@@ -34,6 +56,26 @@ function TodoItem({ text, id, completed }) {
         <Button onClick={() => handleDelete(id)} color="danger" variant="solid">
           Delete
         </Button>
+        <Button
+          type="primary"
+          icon={<EditOutlined />}
+          onClick={isEditModalOpen}
+          style={{ background: "#3939f1ff" }}
+        />
+        <Modal
+          title="Edit Todo"
+          closable={{ "aria-label": "Custom Close Button" }}
+          open={isEdit}
+          onOk={() => isEditModalOk(id)}
+          onCancel={isEditModalCancel}
+        >
+          <Input
+            value={newTodoText}
+            onChange={(e) => {
+              setNewTodoText(e.target.value);
+            }}
+          />
+        </Modal>
       </Flex>
     </Flex>
   );

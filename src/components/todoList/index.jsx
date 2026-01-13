@@ -8,14 +8,7 @@ function TodoList() {
   return (
     <Flex vertical gap="middle">
       {todos.map((todo) => {
-        return (
-          <TodoItem
-            key={todo.id}
-            text={todo.text}
-            id={todo.id}
-            completed={todo.completed}
-          />
-        );
+        return <TodoItem key={todo.id} {...todo} />;
       })}
     </Flex>
   );

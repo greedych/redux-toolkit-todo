@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../redux/slices";
+import { addTodo } from "../../redux/slices/todoSlice";
 
 function TodoForm() {
   const [form] = Form.useForm();
