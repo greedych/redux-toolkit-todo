@@ -12,10 +12,9 @@ function TodoItem({ text, id, completed }) {
   const dispatch = useDispatch();
 
   const [isEdit, setIsEdit] = useState(false);
-  const [newTodoText, setNewTodoText] = useState("");
+  const [newTodoText, setNewTodoText] = useState(text);
 
   const isEditModalOpen = () => {
-    setNewTodoText(text);
     setIsEdit(true);
   };
 
