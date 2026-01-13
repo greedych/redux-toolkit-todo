@@ -40,6 +40,7 @@ function TodoItem({ text, id, completed }) {
         style={{
           textDecoration: completed ? "line-through" : "none",
           fontSize: "1.2rem",
+          color: completed && "#884a9bff",
         }}
       >
         {text}
